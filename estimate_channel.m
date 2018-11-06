@@ -11,11 +11,11 @@ goldSig = gold_i + 1i*gold_q;
 l_rx = size(rxSig,1);
 l_gold = size(goldSig,1);
 
-cross_corr = xcorr(rxSig, goldSig);
-% plot(abs(cross_corr), '.-');
-% title('Cross Correlation','fontweight','bold');
-% xlabel('Index','fontweight','bold');
-% ylabel('Cross Correlation Magnitude','fontweight','bold');
+cross_corr = xcorr(flipud(rxSig), flipud(goldSig));
+plot(abs(flipud(cross_corr)), '.-');
+title('Cross Correlation','fontweight','bold');
+xlabel('Index','fontweight','bold');
+ylabel('Cross Correlation Magnitude','fontweight','bold');
 
 
 peakInd_raw = find(cross_corr == max(cross_corr));
