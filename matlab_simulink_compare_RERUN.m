@@ -10,9 +10,9 @@ rx_i_base = rx_i;
 rx_q_base = rx_q;
 nrx = size(rx_i_base,1);
 
-chApplied = zeros(nruns, 1);
+%chApplied = zeros(nruns, 1);
 chEst_m = zeros(nruns, 1);
-chEst_s = zeros(nruns, 1);
+%chEst_s = zeros(nruns, 1);
 
 rmax = linspace(1, 0.2, nruns);
 rmin = linspace(0.8, 0, nruns);
@@ -27,8 +27,11 @@ for i = 1:nruns
     %ch_i = rand_unif(rmin(i), rmax, nrx, 1);
     %ch_q = rand_unif(rmin(i), rmax, nrx, 1);
     
-    ch_r = rand_unif(rmin(i), rmax(i));
-    ch_p = rand_unif(pmin(i), pmax(i));
+    %ch_r = rand_unif(rmin(i), rmax(i));
+    %ch_p = rand_unif(pmin(i), pmax(i));
+    
+    ch_r = abs(chApplied(i));
+    ch_p = angle(chApplied(i));
     
     %ch_r = rand_unif(rmin(i), rmax(i), nrx, 1);
     %ch_p = rand_unif(pmin(i), pmax(i), nrx, 1);
@@ -52,7 +55,7 @@ for i = 1:nruns
     warning on;
     %}
     
-    chApplied(i) = mean(ch_i) + 1i*mean(ch_q);
+    %chApplied(i) = mean(ch_i) + 1i*mean(ch_q);
 end
 
 %% Plot 1
